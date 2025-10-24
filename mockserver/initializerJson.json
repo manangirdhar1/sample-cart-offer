@@ -1,15 +1,89 @@
 [
-    {
-      "httpRequest" : {
-        "method" : "GET",
-        "path" : "/api/v1/user_segment",
-        "queryStringParameters" : {
-          "user_id" : ["1"]
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/v1/user_segment",
+      "queryStringParameters": {
+        "user_id": ["1"]
       }
     },
-      "httpResponse" : {
-        "body" : "{\"segment\": \"p1\"}",
-        "statusCode": 200
+    "httpResponse": {
+      "body": "{\"segment\": \"p1\"}",
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
       }
     }
-  ]
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/v1/user_segment",
+      "queryStringParameters": {
+        "user_id": ["2"]
+      }
+    },
+    "httpResponse": {
+      "body": "{\"segment\": \"p2\"}",
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/v1/offer"
+    },
+    "httpResponse": {
+      "body": "{\"response_msg\": \"success\"}",
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/v1/cart/apply_offer",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "cart_value": 200,
+          "segment": "p1",
+          "restaurant_id": 1
+        }
+      }
+    },
+    "httpResponse": {
+      "body": "{\"cart_value\": 190}",
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/v1/cart/apply_offer",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "cart_value": 200,
+          "segment": "p2",
+          "restaurant_id": 1
+        }
+      }
+    },
+    "httpResponse": {
+      "body": "{\"cart_value\": 180}",
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  }
+]
